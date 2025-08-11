@@ -1,0 +1,8 @@
+services:
+  ping:
+    image: czerwonk/ping_exporter
+    container_name: ping
+    ports:
+    - 9427:9427
+    volumes:
+      - ./config:/config

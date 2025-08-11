@@ -1,0 +1,26 @@
+- hosts: localhost
+  gather_facts: yes
+  connection: local
+  tasks:
+    - name: download Repository Deb File
+      get_url:
+        url: https://repo.zabbix.com/zabbix/7.4/release/ubuntu/pool/main/z/zabbix-release/zabbix-release_latest_7.4+ubuntu24.04_all.deb
+        dest: /opt/zabbix-release_latest_7.4+ubuntu24.04_all.deb
+        
+    - name: Adding Repo
+      apt:
+        deb: /opt/zabbix-release_latest_7.4+ubuntu24.04_all.deb
+
+    - name: To Update the cache
+      apt:
+        update_cache: yes
+
+    - name: install zabbix agent
+      apt:
+        name: zabbix-agent2
+        state: latest
+
+    - name:  Start zabbix-agent2 service
+      service:
+        name: zabbix-agent2
+        state: started

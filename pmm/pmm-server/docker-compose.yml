@@ -1,0 +1,15 @@
+services:
+  pmm-data:
+    image: percona/pmm-server:2
+    command: /bin/true
+    volumes:
+      - /srv
+    container_name: pmm-data
+  PMM:
+    container_name: pmm-server
+    image: percona/pmm-server:2
+    volumes_from:
+    - pmm-data
+    ports:
+    - 443:443
+    restart: always
