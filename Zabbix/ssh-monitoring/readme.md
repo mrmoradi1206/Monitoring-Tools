@@ -201,12 +201,3 @@ ssh user@<VM_IP>
 You should immediately receive a Telegram alert with username and source IP.
 
 ---
-
-## Notes / Best Practices
-- Prefer **key-based SSH** and disable password auth if possible
-- Combine with **Fail2Ban** for automatic blocking
-- Use IP filters in triggers to avoid alert noise
-- Works with Zabbix 7.x (tested)
-
----
-
